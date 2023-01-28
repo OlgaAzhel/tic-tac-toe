@@ -93,22 +93,21 @@ function getWinner(moveIdx) {
     let winArray = winSituations[moveIdx]
     console.log("this is move index:", moveIdx)
     winArray.forEach(function (arr) {
-        score = 1
+        score = 0
         arr.forEach(function(el) {
             if (board[moveIdx] === board[el]) {
                 score = score + 1
                 console.log("THIS IS CURRENT SCORE:", score)
-
             }
             
         })
-        if (score === 3) {
+        if (score === 2) {
             win = 1
         }
 
     })
 
-    if (score !== 3 && board.indexOf(0) === -1) {
+    if (win !== 1 && board.indexOf(0) === -1) {
         return 'T'
     }
 
