@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Comfortaa', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    font-size: 4vmin;
+    font-weight: bolder;
+    color: #1c70a8;
+    letter-spacing: 0.5vmin;
+}
+
+h1 {
+    color: #2a88c8;
+    font-size: 3vmin;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 21vmin);
+    grid-template-rows: repeat(3, 21vmin);
+    gap: 3vmin;
+}
+
+#board>div {
+    background-color: #3bc8f4;
+    color: white;
+    font-size: 18vmin;
+    text-align: center;
+}
+
+button {
+    margin-top: 4vmin;
+    padding: 2vmin;
+    border-radius: 1vmin;
+    border: 0.1vmin solid #1c70a8;
+    color: #1c70a8;
+}
+
+button:hover {
+    color: white;
+    background-color: #3bc8f4;
+}
