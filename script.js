@@ -8,13 +8,13 @@ let board
 let turn
 let winner
 
-let cellState = {
+const cellState = {
     '0': null,
     '-1': 'x',
     '1': 'o'
 }
 
-winSituations = {
+const winSituations = {
     '0': [[1, 2], [4, 8], [3, 6]],
     '1': [[0, 2], [4, 7]],
     '2': [[0, 1], [5, 8], [4, 6]],
@@ -25,7 +25,6 @@ winSituations = {
     '7': [[1, 4], [6, 8]],
     '8': [[0, 4], [2, 5], [6, 7]]
 }
-
 
 // 3) Create event listeners
 document.getElementById('board').addEventListener('click', handleMove)
@@ -74,14 +73,21 @@ function renderControls() {
 
 function handleMove(evt) {
     const cellIdx = cellEls.indexOf(evt.target)
+    // Prevents event listener handleMove to execute if clicked outside the cell (on gap between cells, for example)
     if (cellIdx === -1) {
         return
     }
+    // Update game state upon player's move:
+
+    // Adding X or O inside the cell according to player's move 
     evt.target.innerText = cellState[turn]
+    // Updating board array accordingly
     board[cellIdx] = turn;
+    // Switch turn for
     turn *= -1;
-    console.log(board)
+    // Checking if there is a win situation 
     winner = getWinner(cellIdx)
+    // If no winner - render board for the next move
     render()
 
 }
@@ -91,13 +97,11 @@ function getWinner(moveIdx) {
     let win = 0
     let score
     let winArray = winSituations[moveIdx]
-    console.log("this is move index:", moveIdx)
     winArray.forEach(function (arr) {
         score = 0
         arr.forEach(function(el) {
             if (board[moveIdx] === board[el]) {
                 score = score + 1
-                console.log("THIS IS CURRENT SCORE:", score)
             }
             
         })
